@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}">
+    <title></title>
+</head>
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar}"></nav>
+    <div class="container">
+        <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <span th:text="${successMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">SURNAME</th>
+                <th scope="col">EXAM</th>
+                <th scope="col">MARK</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="student : ${students}">
+                    <th scope="row" th:text="${student.getId()}" th:style="${student.getMark().equals('F')} ? 'color: #f00' : 'color: #000'"></th>
+                    <td th:text="${student.getName()}" th:style="${student.getMark().equals('F')} ? 'color: #f00' : 'color: #000'"></td>
+                    <td th:text="${student.getSurname()}" th:style="${student.getMark().equals('F')} ? 'color: #f00' : 'color: #000'"></td>
+                    <td th:text="${student.getExam()}" th:style="${student.getMark().equals('F')} ? 'color: #f00' : 'color: #000'"></td>
+                    <td th:text="${student.getMark()}" th:style="${student.getMark().equals('F')} ? 'color: #f00' : 'color: #000'"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

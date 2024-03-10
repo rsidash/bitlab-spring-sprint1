@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head :: head}">
+    <title></title>
+</head>
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar}"></nav>
+    <div class="container">
+        <form class="d-flex justify-content-center flex-column" method="post" th:object="${student}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input class="form-control" id="name" name="name" placeholder="Insert name">
+                <div th:if="${#fields.hasErrors('name')}" class="alert alert-danger" role="alert">
+                    <div th:errors="*{name}">Name Error</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="surname" class="form-label">Surname</label>
+                <input class="form-control" id="surname" name="surname" placeholder="Insert surname">
+                <div th:if="${#fields.hasErrors('surname')}" class="alert alert-danger" role="alert">
+                    <div th:errors="*{surname}">Surname Error</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="exam" class="form-label">Exam</label>
+                <input class="form-control" id="exam" name="exam" placeholder="Insert exam">
+                <div th:if="${#fields.hasErrors('exam')}" class="alert alert-danger" role="alert">
+                    <div th:errors="*{exam}">Exam Error</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Add student</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
